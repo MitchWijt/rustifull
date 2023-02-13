@@ -1,8 +1,21 @@
 extern crate core;
 
+pub trait Summary {
+    fn sum(&self) -> String;
+}
+
 pub struct Person {
     age: Option<i32>,
     name: String
+}
+
+impl Summary for Person {
+    fn sum(&self) -> String {
+        match self.age {
+            None => format!("User has name {}, but has no age", self.name),
+            Some(age) => format!("User has name {}, and has age {}", self.name, age)
+        }
+    }
 }
 
 impl Person {
@@ -29,9 +42,6 @@ fn main() {
 
     match other_person {
         None => println!("Person does exist"),
-        Some(i) => match i.age {
-            None => println!("User has name {}, but has no age", i.name),
-            Some(x) => println!("User has name {}, and has age", x)
-        }
+        Some(i) => println!("{}", i.sum())
     }
 }
