@@ -1,3 +1,4 @@
+mod file_system;
 extern crate core;
 
 pub trait Summary {
@@ -39,9 +40,12 @@ impl Person {
 fn main() {
     let my_person= Person::from_name(String::from("FirstName"));
     let other_person: Option<Person> = Person::new(String::from("OtherName"), 22);
+    let files: Vec<String> = file_system::list_files();
 
     match other_person {
         None => println!("Person does exist"),
         Some(i) => println!("{}", i.sum())
     }
+
+    println!("these are my files: {:?}", files);
 }
