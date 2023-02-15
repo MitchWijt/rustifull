@@ -38,7 +38,8 @@ impl Person {
 }
 
 fn main() {
-    let my_person= Person::from_name(String::from("FirstName"));
+    let _my_person= Person::from_name(String::from("FirstName"));
+
     let other_person: Option<Person> = Person::new(String::from("OtherName"), 22);
     let files: Vec<String> = file_system::list_files();
 
